@@ -1,0 +1,228 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "reimform",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.13.1",
+            "toolsId": "e54f3995-8345-4f92-bb9d-674d6e939f40"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "odata/v4/my/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "sem-display": {
+                    "semanticObject": "sem",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.122.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {},
+                "sap.suite.ui.commons": {},
+                "sap.f": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "reimform.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "reimbursementheaderList",
+                    "target": "reimbursementheaderList"
+                },
+                {
+                    "pattern": "reimbursementheader({key}):?query:",
+                    "name": "reimbursementheaderObjectPage",
+                    "target": "reimbursementheaderObjectPage"
+                }
+            ],
+            "targets": {
+                "reimbursementheaderList": {
+                    "type": "Component",
+                    "id": "reimbursementheaderList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/reimbursementheader",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "reimbursementheader": {
+                                    "detail": {
+                                        "route": "reimbursementheaderObjectPage"
+                                    }
+                                }
+                            },
+                            "initialLoad": "Enabled",
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "columns": {
+                                        "DataField::reimbursmentId": {
+                                            "width": "300px"
+                                        },
+                                        "DataField::submissionDate": {
+                                            "width": "300px"
+                                        },
+                                        "DataField::submittedBy": {
+                                            "width": "300px"
+                                        },
+                                        "DataField::status_dis": {
+                                            "width": "350px"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "reimbursementheaderObjectPage": {
+                    "type": "Component",
+                    "id": "reimbursementheaderObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "contextPath": "/reimbursementheader",
+                            "content": {
+                                "body": {
+                                    "sections": {
+                                        "Attachment": {
+                                            "template": "reimform.ext.fragment.Attachment",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "ReimbursementDetails"
+                                            },
+                                            "title": "Attachments",
+                                            "type": "XMLFragment"
+                                        },
+                                        "Workflow": {
+                                            "template": "reimform.ext.fragment.Workflow",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "Attachment"
+                                            },
+                                            "title": "Workflow History",
+                                            "type": "XMLFragment"
+                                        },
+                                        "Comments": {
+                                            "template": "reimform.ext.fragment.Comments",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "Workflow"
+                                            },
+                                            "title": "Comments",
+                                            "type": "XMLFragment"
+                                        }
+                                    }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "headItem1/@com.sap.vocabularies.UI.v1.LineItem#ReimbursementDetails": {
+                                    "columns": {
+                                        "DataField::item": {
+                                            "width": "300px"
+                                        },
+                                        "DataField::reimbursmentType": {
+                                            "width": "300px"
+                                        },
+                                        "DataField::reimbursmentDate": {
+                                            "width": "300px"
+                                        },
+                                        "DataField::amountToBeReimbursed": {
+                                            "width": "300px"
+                                        },
+                                        "DataField::amountEligibleToClaim": {
+                                            "width": "300px"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {}
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

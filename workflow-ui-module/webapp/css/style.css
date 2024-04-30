@@ -1,0 +1,17 @@
+/* Enter your custom styles here */
+
+.inputform{
+    padding-left: 23px !important;
+}
+.textform{
+    padding-top: 7px !important;
+}
+.tableworkflow{
+    width: auto !important;
+}
+.filesfortable{
+    /* width: auto; */
+    width: -webkit-fill-available !important;
+}
+
+

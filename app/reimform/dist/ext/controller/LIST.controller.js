@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/ControllerExtension"],function(e){"use strict";return e.extend("reimform.ext.controller.LIST",{override:{onInit:function(){var e=this.base.getExtensionAPI().getModel()}}})});

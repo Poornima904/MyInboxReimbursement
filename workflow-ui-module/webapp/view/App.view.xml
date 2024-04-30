@@ -1,0 +1,167 @@
+<mvc:View controllerName="inbox.workflowuimodule.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns:uxap="sap.uxap"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns="sap.m">
+
+    <App id="app">
+        <Page>
+            <uxap:ObjectPageLayout id="ObjectPageLayout">
+                <uxap:sections>
+                    <uxap:ObjectPageSection title="Details" titleUppercase="false">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection title="General Information" mode="Collapsed" titleUppercase="false">
+                                <uxap:blocks>
+
+                                    <f:SimpleForm editable="false" layout="ResponsiveGridLayout">
+                                        <f:content>
+
+                                            <Text text="Reimbursment Id" class="textform"></Text>
+                                            <Input class="inputform" value="{context>/reimbursmentId}" editable="false"></Input>
+
+
+                                            <Text text="Reimbursement Date" class="textform"></Text>
+                                            <Input class="inputform" value="{context>/reimbursementDate}" editable="false"></Input>
+
+
+                                            <Text text="Total Amount" class="textform"></Text>
+                                            <Input class="inputform" value="{context>/totalAmount}" editable="false"></Input>
+
+                                        </f:content>
+                                    </f:SimpleForm>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+
+
+                    <uxap:ObjectPageSection title="Details" titleUppercase="false">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection title="Reimbursement Details" mode="Collapsed" titleUppercase="false">
+                                <uxap:blocks>
+                                    <Table id="tableData" items="{path:'context>/tableData', templateShareable:false}">
+                                        <columns>
+                                            <Column id="ReimbursmentType" mergeDuplicates="true" width="12em">
+                                                <Text id="reimbursmentType" text="Reimbursment Type" textAlign="Center"/>
+                                            </Column>
+                                            <Column id="AmountToBeReimbursed" width="12em">
+                                                <Text id="amountToBeReimbursed" text="Amount To Be Reimbursed" textAlign="End"/>
+                                            </Column>
+                                            <Column id="AmountToBeClaimed" width="12em">
+                                                <Text id="amountEligibleToClaim" text="Amount ELigible To Claim" textAlign="End"/>
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem>
+                                                <cells>
+                                                    <Text text="{context>reimbursmentType}"/>
+                                                    <Text text="{context>amountToBeReimbursed}"/>
+                                                    <Text text="{context>amountEligibleToClaim}"/>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+
+                    <uxap:ObjectPageSection title="Details" titleUppercase="false">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection title="Attachments" mode="Collapsed" titleUppercase="false">
+                                <uxap:blocks>
+                                    <Table id="filesTable" class="filesfortable" items="{path:'context>/filesTable', templateShareable:false}">
+                                        <columns>
+                                            <Column id="fileName" mergeDuplicates="true" width="12em">
+                                                <Text id="filename" text="File Name" textAlign="Center"/>
+                                            </Column>
+                                            <!-- <Column id="url" width="12em">
+                                                <Text id="fileurl" text="File Url" textAlign="Center"/>
+                                            </Column> -->
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem>
+                                                <cells>
+                                                    <Link text="{context>fileName}" press="onFilePress" href="{context>url}" target="_blank"/>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+
+                    <uxap:ObjectPageSection title="Details" titleUppercase="false">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection title="Workflow History" mode="Collapsed" titleUppercase="false">
+                                <uxap:blocks>
+
+                                    <Table id="workflowhistory" class="tableworkflow" items="{path:'context>/workflowhistory', templateShareable:false}">
+                                        <columns>
+                                            <Column id="level" mergeDuplicates="true" width="12em">
+                                                <Text id="Level" text="Level" textAlign="Center"/>
+                                            </Column>
+                                            <Column id="status" width="12em">
+                                                <Text id="Status" text="Status" textAlign="Center"/>
+                                            </Column>
+                                            <Column id="BeginDate" mergeDuplicates="true" width="12em">
+                                                <Text id="Begindate" text="Begin Date" textAlign="Center"/>
+                                            </Column>
+                                            <Column id="EndDate" width="12em">
+                                                <Text id="Enddate" text="End Date" textAlign="Center"/>
+                                            </Column>
+                                            <Column id="DaysTaken" mergeDuplicates="true" width="12em">
+                                                <Text id="Daystaken" text="Days Taken" textAlign="Center"/>
+                                            </Column>
+                                            <Column id="Users" width="12em">
+                                                <Text id="users" text="Users" textAlign="Center"/>
+                                            </Column>
+                                            <Column id="ApprovedBy" width="12em">
+                                                <Text id="Approvedby" text="Approved By" textAlign="Center"/>
+                                            </Column>
+
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem>
+                                                <cells>
+                                                    <Text text="{context>level}"/>
+                                                    <Text text="{context>status}"/>
+                                                    <Text text="{context>BeginDate}"/>
+                                                    <Text text="{context>EndDate}"/>
+                                                    <Text text="{context>DaysTaken}"/>
+                                                    <Text text="{context>Users}"/>
+                                                    <Text text="{context>ApprovedBy}"/>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                            
+
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+
+                    <uxap:ObjectPageSection title="Details" titleUppercase="false">
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection title="Comments" mode="Collapsed" titleUppercase="false">
+                                <uxap:blocks>
+                                    <TextArea id="comment-field" placeholder="Enter your comment here..." rows="4" width="100%" />
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+
+                </uxap:sections>
+            </uxap:ObjectPageLayout>
+        </Page>
+    </App>
+
+</mvc:View>

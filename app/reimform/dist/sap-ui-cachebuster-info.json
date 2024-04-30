@@ -1,0 +1,21 @@
+{
+  "ext/fragment/Workflow-dbg.js": 1711703497170,
+  "ext/fragment/Workflow.js": 1711703497170,
+  "manifest.json": 1713853172377,
+  "ext/fragment/Comments.js": 1711705571228,
+  "ext/fragment/Attachment.js": 1711702747735,
+  "ext/controller/OBJ.controller.js": 1712729794047,
+  "ext/controller/LIST.controller.js": 1711706061996,
+  "Component.js": 1711694756215,
+  "Component-preload.js": 1713853172740,
+  "i18n/i18n.properties": 1711694771267,
+  "ext/fragment/Comments-dbg.js": 1711705571228,
+  "ext/fragment/Attachment-dbg.js": 1711702747735,
+  "ext/controller/OBJ-dbg.controller.js": 1712729794047,
+  "ext/controller/LIST-dbg.controller.js": 1711706061996,
+  "Component-dbg.js": 1711694756215,
+  "ext/fragment/Workflow.fragment.xml": 1711704372432,
+  "ext/fragment/Comments.fragment.xml": 1711705068424,
+  "ext/fragment/Attachment.fragment.xml": 1711709599877,
+  "index.html": 1711694756215
+}
